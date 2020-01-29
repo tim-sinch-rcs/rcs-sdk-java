@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'org.hidetake.swagger.generator' version '2.18.1'
+}
+
+version 'unspecified'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'
+}
+
+task downloadSwaggerFile() {
+    def f = file('build/rcs_api_swagger.yml')
+    if (!f.exists()) {
+        mkdir 'build'
+        new java.net.URL('https://api.clxcommunications.com/rcs_api_swagger.yml').withInputStream { i -> f.withOutputStream { it << i } }
+    }
+}
+
+swaggerSources {
+    rcs {
+        inputFile = file('build/rcs_api_swagger.yml')
+        code {
+            language = 'java'
+            additionalProperties = [
+                    'modelPackage': "com.sinch.rcs.model",
+                    'apiPackage': "com.sinch.rcs.api",
+                    'invokerPackage': "com.sinch.rcs",
+                    'configPackage': "com.sinch.rcs.configuration",
+                    'dateLibrary': "legacy",
+                    'java8': "true",
+                    'library': "resttemplate"
+            ]
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += file("$buildDir/swagger-code-rcs/src/main/java")
+        }
+    }
+}
+
+compileJava.dependsOn generateSwaggerCode
+generateSwaggerCode.dependsOn downloadSwaggerFile
+
+ext {
+    swagger_annotations_version = "2.0.0"
+    jackson_version = "2.8.9"
+    spring_web_version = "4.3.9.RELEASE"
+    junit_version = "4.12"
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // We need this for the generated code
+    compile "io.swagger.core.v3:swagger-annotations:$swagger_annotations_version"
+    compile "org.springframework:spring-web:$spring_web_version"
+    compile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    compile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+    compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+    compile "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:$jackson_version"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
+    testCompile "junit:junit:$junit_version"
+}
