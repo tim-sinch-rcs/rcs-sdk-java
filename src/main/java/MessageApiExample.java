@@ -26,13 +26,13 @@ public class MessageApiExample {
 
     MessageApi apiInstance = new MessageApi(apiClient);
 
-    String msisdn = "< Phone number of the recipient >";
+    String phoneNumber = "< Phone number of the recipient >";
     String botId = "< ID of your bot >";
 
     Message body = textMessageWithSuggestions();
     // Uncomment to send a rich card message
     // body = carouselRichCardMessage();
-    body.setTo(msisdn);
+    body.setTo(phoneNumber);
 
     try {
       MessageQueuedResponse result = apiInstance.sendAMessage(body, botId);

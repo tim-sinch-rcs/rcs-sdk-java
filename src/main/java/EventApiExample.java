@@ -15,7 +15,7 @@ public class EventApiExample {
 
     EventApi apiInstance = new EventApi(apiClient);
 
-    String msisdn = "< Phone number of the recipient >";
+    String phoneNumber = "< Phone number of the recipient >";
     String botId = "< ID of your bot >";
 
     AgentComposingEvent agentComposingEvent = new AgentComposingEvent();
@@ -23,7 +23,7 @@ public class EventApiExample {
 
     AgentEvent body = new AgentEvent();
     body.setEvent(agentComposingEvent);
-    body.setTo(msisdn);
+    body.setTo(phoneNumber);
 
     try {
       apiInstance.sendAnEvent(body, botId);

@@ -14,10 +14,10 @@ public class CapabilitiesApiExample {
     CapabilitiesApi apiInstance = new CapabilitiesApi(apiClient);
 
     String botId = "< ID of your bot >";
-    String msisdn = "< Phone number for the lookup >";
+    String phoneNumber = "< Phone number for the lookup >";
 
     try {
-      CapabilitiesResponse result = apiInstance.capabilityQuery(botId, msisdn);
+      CapabilitiesResponse result = apiInstance.capabilityQuery(botId, phoneNumber);
       System.out.println(result);
     } catch (Exception e) {
       System.err.println("Exception when calling CapabilitiesApi#capabilityQuery");
