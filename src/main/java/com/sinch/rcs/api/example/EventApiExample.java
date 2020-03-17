@@ -1,3 +1,5 @@
+package com.sinch.rcs.api.example;
+
 import com.sinch.rcs.ApiClient;
 import com.sinch.rcs.api.EventApi;
 import com.sinch.rcs.model.AgentComposingEvent;

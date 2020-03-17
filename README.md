@@ -7,17 +7,17 @@ These client classes are then used to call the Sinch RCS API.
 
 # Examples
 
-## MessageApiExample 
+## com.sinch.rcs.api.example.MessageApiExample 
 
 In this example, we send rcs messages. The example shows both how to send a simple text payload as 
  well as a more complex rich card.
 
-## EventApiExample
+## com.sinch.rcs.api.example.EventApiExample
  
 In this example, we send the _composing_ event, to illustrate that we are composing a reply, to
 give an impression of an active counterpart. 
  
-## CapabilitiesAPIExample
+## com.sinch.rcs.api.example.CapabilitiesAPIExample
 
 Finally, we demonstrate how to do a capability lookup.  
 

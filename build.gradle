@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
     id 'org.hidetake.swagger.generator' version '2.18.1'
 }
 
@@ -9,6 +10,17 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+application {
+    def example = project.hasProperty("example") ? getProperty("example") : "Message"
+    if (example == "Capabilities") {
+        mainClassName = 'com.sinch.rcs.api.example.CapabilitiesApiExample'
+    } else if (example == "Message") {
+        mainClassName = 'com.sinch.rcs.api.example.MessageApiExample'
+    } else if (example == "Event") {
+        mainClassName = 'com.sinch.rcs.api.example.EventApiExample'
+    }
 }
 
 dependencies {
