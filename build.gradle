@@ -28,16 +28,16 @@ dependencies {
 }
 
 task downloadSwaggerFile() {
-    def f = file('build/rcs_api_swagger.yml')
+    def f = file('build/sinch_rcs_api_v1.yml')
     if (!f.exists()) {
         mkdir 'build'
-        new java.net.URL('https://api.clxcommunications.com/rcs_api_swagger.yml').withInputStream { i -> f.withOutputStream { it << i } }
+        new java.net.URL('https://us.rcs.api.sinch.com/sinch_rcs_api_v1.yml').withInputStream { i -> f.withOutputStream { it << i } }
     }
 }
 
 swaggerSources {
     rcs {
-        inputFile = file('build/rcs_api_swagger.yml')
+        inputFile = file('build/sinch_rcs_api_v1.yml')
         code {
             language = 'java'
             additionalProperties = [
