@@ -1,9 +1,9 @@
-#  Sinch RCS SDK for Java
+#  Sinch RCS demo for Java
 
-Use this SDK to communicate with the RCS API. It contains some examples to help you get started.
+Use this demo to communicate with the RCS API. It contains some examples to help you get started.
 
-The SDK is generated using the RCS API specification at 
-https://api.clxcommunications.com/rcs_api_swagger.yml. The specification is downloaded when the 
+The code generated using the RCS API specification at 
+https://us.rcs.api.sinch.com/sinch_rcs_api_v1.yml. The specification is downloaded when the 
 project is built, and then the client classes are generated from it.
 
 These client classes are then used to call the Sinch RCS API.
