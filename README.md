@@ -40,3 +40,7 @@ Use `auth name` for `botId`.
 `./gradlew -Pexample=Event run`   
 `./gradlew -Pexample=Capabilities run`  
 `./gradlew -Pexample=Message run`
+
+# Want to know more?
+
+Check out the documentation at https://developers.sinch.com/docs/rcs-introduction.
